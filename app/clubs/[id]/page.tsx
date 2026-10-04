@@ -96,9 +96,15 @@ export default async function ClubPage({ params }: Props) {
               </div>
             </section>
 
-            <button className="w-full rounded-full bg-stone-900 px-6 py-4 font-medium text-white hover:bg-stone-700">
-              この読書会に参加する
-            </button>
+            
+  
+  <Link
+  href={`/clubs/${id}/room`}
+  className="block w-full rounded-full bg-stone-900 px-6 py-4 text-center font-medium text-white hover:bg-stone-700"
+>
+  この読書会に参加する
+</Link>
+
           </div>
         </div>
       </div>
