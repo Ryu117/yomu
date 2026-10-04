@@ -45,8 +45,9 @@ export default function NewClubPage() {
   return;
 }
 
-    alert("読書会を作成しました！");
-    router.push("/");
+   alert("読書会を作成しました！");
+router.push("/");
+router.refresh();
   }
 
   return (
