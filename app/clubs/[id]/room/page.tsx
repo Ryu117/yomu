@@ -121,14 +121,20 @@ export default async function RoomPage({ params }: Props) {
               </p>
             </div>
 
-            <a
-              href="https://meet.google.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-6 block w-full rounded-full bg-white px-6 py-4 text-center font-medium text-stone-900 hover:bg-stone-200"
-            >
-              Google Meetを開く
-            </a>
+           {club.meet_url ? (
+  <a
+    href={club.meet_url}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="mt-6 block w-full rounded-full bg-white px-6 py-4 text-center font-medium text-stone-900 hover:bg-stone-200"
+  >
+    Google Meetを開く
+  </a>
+) : (
+  <div className="mt-6 rounded-2xl border border-stone-800 px-6 py-4 text-center text-stone-500">
+    Meet URLはまだ登録されていません
+  </div>
+)}
 
             <button className="mt-3 w-full rounded-full border border-stone-700 px-6 py-4 font-medium text-stone-300 hover:bg-stone-800">
               読書会を終了する

@@ -14,6 +14,7 @@ export default function NewClubPage() {
   const [theme, setTheme] = useState("");
   const [rule, setRule] = useState("読了必須");
   const [description, setDescription] = useState("");
+  const [meetUrl, setMeetUrl] = useState("");
 
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -24,15 +25,16 @@ export default function NewClubPage() {
     setLoading(true);
     setErrorMessage("");
 
-    const { error } = await supabase.from("book_clubs").insert({
-      title,
-      author,
-      event_date: eventDate,
-      capacity: Number(capacity),
-      theme,
-      rule,
-      description,
-    });
+   const { error } = await supabase.from("book_clubs").insert({
+  title,
+  author,
+  event_date: eventDate,
+  capacity: Number(capacity),
+  theme,
+  rule,
+  description,
+  meet_url: meetUrl,
+});
 
     setLoading(false);
 
@@ -45,9 +47,8 @@ export default function NewClubPage() {
   return;
 }
 
-   alert("読書会を作成しました！");
-router.push("/");
-router.refresh();
+  alert("読書会を作成しました！");
+window.location.href = "/";
   }
 
   return (
@@ -167,7 +168,19 @@ router.refresh();
               <option>未読OK</option>
             </select>
           </div>
+<div>
+  <label className="mb-2 block text-sm font-medium">
+    Google Meet URL
+  </label>
 
+  <input
+    type="url"
+    value={meetUrl}
+    onChange={(e) => setMeetUrl(e.target.value)}
+    placeholder="https://meet.google.com/..."
+    className="w-full rounded-xl border border-stone-300 px-4 py-3 outline-none focus:border-stone-900"
+  />
+</div>
           <div>
             <label className="mb-2 block text-sm font-medium">
               読書会について
